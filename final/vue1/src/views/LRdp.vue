@@ -61,7 +61,7 @@
       </el-table-column>
       <el-table-column
           width="50"
-          prop="tn"
+          prop="fn"
           label="tn">
       </el-table-column>
       <el-table-column
@@ -71,7 +71,7 @@
       </el-table-column>
       <el-table-column
           width="50"
-          prop="fn"
+          prop="tn"
           label="fn">
       </el-table-column>
 

@@ -1,7 +1,7 @@
 <!-- 这里是表格的渲染 -->
 <template>
   <div>
-    <input ref="excel-upload-input" class="excel-upload-input" type="file" accept=".xlsx, .xls" @change="handleClick">
+    <input ref="excel-upload-input" class="excel-upload-input" type="file" accept=".xlsx, .xls, .csv" @change="handleClick">
     <div class="drop" @drop="handleDrop" @dragover="handleDragover" @dragenter="handleDragover">
       将文件拖拽到此处或者
       <el-button :loading="loading" style="margin-left:16px;" size="large" type="primary" plain @click="handleUpload">
