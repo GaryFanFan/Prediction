@@ -1,40 +1,21 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shixun2022.10
+ Source Server         : abc
  Source Server Type    : MySQL
- Source Server Version : 80025
- Source Host           : sepbifang.mysql.rds.aliyuncs.com:3306
+ Source Server Version : 80031
+ Source Host           : localhost:3306
  Source Schema         : springboot-vue
 
  Target Server Type    : MySQL
- Target Server Version : 80025
+ Target Server Version : 80031
  File Encoding         : 65001
 
- Date: 19/10/2022 15:04:42
+ Date: 14/09/2023 11:20:01
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for area
--- ----------------------------
-DROP TABLE IF EXISTS `area`;
-CREATE TABLE `area`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `pid` int NULL DEFAULT NULL,
-  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of area
--- ----------------------------
-INSERT INTO `area` VALUES (1, '安徽省', NULL, 'Anhui');
-INSERT INTO `area` VALUES (2, '合肥市', 1, 'Hefei');
-INSERT INTO `area` VALUES (3, '政务区', 2, 'Zhengwu');
 
 -- ----------------------------
 -- Table structure for book
@@ -52,80 +33,13 @@ CREATE TABLE `book`  (
   `tp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'tp',
   `fn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'fn',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES (4, '1497', '206', '997', '791', '0.8084252758274825', NULL, NULL, NULL, NULL);
-
--- ----------------------------
--- Table structure for category
--- ----------------------------
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '名称',
-  `pid` int NULL DEFAULT NULL COMMENT '父节点id',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of category
--- ----------------------------
-INSERT INTO `category` VALUES (1, '文学', NULL);
-INSERT INTO `category` VALUES (2, '童书', 1);
-INSERT INTO `category` VALUES (3, '社会科学', 1);
-INSERT INTO `category` VALUES (4, '经济学', 1);
-INSERT INTO `category` VALUES (5, '科普百科', 2);
-INSERT INTO `category` VALUES (7, '法律', 3);
-
--- ----------------------------
--- Table structure for message
--- ----------------------------
-DROP TABLE IF EXISTS `message`;
-CREATE TABLE `message`  (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '内容',
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '评论人',
-  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '评论时间',
-  `parent_id` bigint NULL DEFAULT NULL COMMENT '父ID',
-  `foreign_id` bigint NULL DEFAULT 0 COMMENT '关联id',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '留言表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of message
--- ----------------------------
-INSERT INTO `message` VALUES (21, '哦豁', 'admin', '2021-05-22 10:49:48', NULL, 0);
-INSERT INTO `message` VALUES (22, '老弟', 'admin', '2021-05-22 10:51:07', 21, 0);
-INSERT INTO `message` VALUES (23, '哈哈哈', 'zhang', '2021-05-24 17:13:45', 22, 0);
-INSERT INTO `message` VALUES (24, '我们都爱吃大西瓜', 'zhang', '2021-05-24 17:13:58', NULL, 0);
-INSERT INTO `message` VALUES (25, '1232', 'admin', '2021-10-31 16:46:39', NULL, 0);
-INSERT INTO `message` VALUES (26, '2345', 'admin', '2021-10-31 16:47:00', 25, 0);
-INSERT INTO `message` VALUES (27, '11111', 'admin', '2021-10-31 16:52:09', 26, 0);
-
--- ----------------------------
--- Table structure for news
--- ----------------------------
-DROP TABLE IF EXISTS `news`;
-CREATE TABLE `news`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '标题',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '内容',
-  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '作者',
-  `time` datetime NULL DEFAULT NULL COMMENT '发布时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of news
--- ----------------------------
-INSERT INTO `news` VALUES (4, '4444', '<p>444444</p><p><br/></p><p>44444</p><p><br/></p><p><br/></p><p>555555<img src=\"https://img1.baidu.com/it/u=4110196045,3829597861&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg\" contenteditable=\"false\" style=\"font-size: 14px; max-width: 100%;\"/></p>', '管理员', '2021-07-17 18:55:27');
-INSERT INTO `news` VALUES (5, '77777', '<p>7777</p><p><br/></p><p><img src=\"http://localhost:9090/files/c536f6f2f0e94983951240d73d740601\" style=\"max-width:100%;\" contenteditable=\"false\" width=\"388\" height=\"388\"/><br/></p><p>8888</p><p><br/></p><p><img src=\"http://localhost:9090/files/b344314319f047cf9192ce64ca454674\" style=\"max-width:100%;\" contenteditable=\"false\"/></p>', '管理员', '2021-07-17 19:14:14');
-INSERT INTO `news` VALUES (6, '带你从0搭建一个Springboot+vue前后端分离项目，真的很简单！', '<p><iframe src=\"//player.bilibili.com/player.html?aid=803885504&amp;bvid=BV14y4y1M7Nc&amp;cid=361690131&amp;page=1\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\" width=\"600\" height=\"400\"> </iframe></p>', '管理员', '2021-09-05 22:28:25');
-INSERT INTO `news` VALUES (7, '我擦！妹子给我整害羞了⁄(⁄ ⁄ ⁄ω⁄ ⁄ ⁄)⁄……', '<p><iframe src=\"//player.bilibili.com/player.html?aid=717601909&amp;bvid=BV1sQ4y1174g&amp;cid=396410411&amp;page=1\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\" width=\"600\" height=\"400\"> </iframe></p>', '管理员', '2021-09-05 22:31:40');
-INSERT INTO `news` VALUES (8, '11111', '<p>哈哈哈</p><p><br/></p><p><img src=\"http://localhost:9090/files/abbac1162e3948dcbb5df85f752f27f3\" style=\"max-width:100%;\" contenteditable=\"false\"/></p><p></p><p></p>', '管理员', '2021-09-29 23:17:27');
+INSERT INTO `book` VALUES (1, '997', '64', '691', '627', '0.869753979739508', NULL, NULL, NULL, NULL);
+INSERT INTO `book` VALUES (2, '997', '208', '1497', '1289', '0.8483633934535738', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for permission
@@ -220,15 +134,15 @@ CREATE TABLE `t_order`  (
   `tn` int NULL DEFAULT NULL COMMENT '用户id',
   `fp` int NULL DEFAULT NULL COMMENT '用户账户',
   `fn` int NULL DEFAULT NULL COMMENT '创建时间',
-  `pay_time` timestamp NULL DEFAULT NULL COMMENT '支付时间',
+  `pay_time` timestamp(0) NULL DEFAULT NULL COMMENT '支付时间',
   `state` int NOT NULL DEFAULT 0 COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES (29, '997', '691', '435', '256', '0.6295224312590448', 403, 144, 112, 32, NULL, 0);
+INSERT INTO `t_order` VALUES (1, '1497', '691', '104', '587', '0.15050651230101303', 0, 587, 0, 104, NULL, 0);
 
 -- ----------------------------
 -- Table structure for user
@@ -245,7 +159,7 @@ CREATE TABLE `user`  (
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '头像',
   `account` decimal(10, 2) NULL DEFAULT 0.00 COMMENT '账户余额',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
